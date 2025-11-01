@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}About - Modern Python Web App{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="bg-white rounded-lg shadow-lg p-8 md:p-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-6">About PyWebApp</h1>
+        
+        <div class="prose prose-lg max-w-none">
+            <p class="text-gray-600 text-lg mb-6">
+                PyWebApp is a modern, high-performance web application built with Python and FastAPI. 
+                It demonstrates the power of modern Python web development with beautiful design and efficient architecture.
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Technology Stack</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <div class="border border-gray-200 rounded-lg p-4">
+                    <h3 class="font-semibold text-gray-900 mb-2">Backend</h3>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>• FastAPI - Modern web framework</li>
+                        <li>• Pydantic - Data validation</li>
+                        <li>• Uvicorn - ASGI server</li>
+                        <li>• Python 3.8+</li>
+                    </ul>
+                </div>
+                <div class="border border-gray-200 rounded-lg p-4">
+                    <h3 class="font-semibold text-gray-900 mb-2">Frontend</h3>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>• Jinja2 - Template engine</li>
+                        <li>• Tailwind CSS - Styling</li>
+                        <li>• Responsive design</li>
+                        <li>• Modern animations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Features</h2>
+            <div class="space-y-3 mb-8">
+                <div class="flex items-start">
+                    <svg class="h-6 w-6 text-green-500 mr-3 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <div>
+                        <h3 class="font-semibold text-gray-900">RESTful API</h3>
+                        <p class="text-gray-600">Complete CRUD operations with automatic OpenAPI documentation</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <svg class="h-6 w-6 text-green-500 mr-3 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <div>
+                        <h3 class="font-semibold text-gray-900">High Performance</h3>
+                        <p class="text-gray-600">Built on FastAPI for exceptional speed and efficiency</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <svg class="h-6 w-6 text-green-500 mr-3 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <div>
+                        <h3 class="font-semibold text-gray-900">Beautiful Design</h3>
+                        <p class="text-gray-600">Modern, responsive UI with Tailwind CSS and smooth animations</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <svg class="h-6 w-6 text-green-500 mr-3 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <div>
+                        <h3 class="font-semibold text-gray-900">Static Generation</h3>
+                        <p class="text-gray-600">Pre-render pages for optimal performance and deployment</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">API Endpoints</h2>
+            <div class="bg-gray-50 rounded-lg p-4 mb-8">
+                <code class="text-sm text-gray-800">
+                    <div class="mb-2"><span class="text-green-600 font-semibold">GET</span> /api/tasks - Get all tasks</div>
+                    <div class="mb-2"><span class="text-green-600 font-semibold">GET</span> /api/tasks/{id} - Get task by ID</div>
+                    <div class="mb-2"><span class="text-blue-600 font-semibold">POST</span> /api/tasks - Create new task</div>
+                    <div class="mb-2"><span class="text-yellow-600 font-semibold">PUT</span> /api/tasks/{id} - Update task</div>
+                    <div class="mb-2"><span class="text-red-600 font-semibold">DELETE</span> /api/tasks/{id} - Delete task</div>
+                    <div><span class="text-green-600 font-semibold">GET</span> /api/stats - Get statistics</div>
+                </code>
+            </div>
+
+            <div class="bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg p-6 text-white mt-8">
+                <h3 class="text-xl font-bold mb-2">Created by Amiya</h3>
+                <p class="text-purple-100">
+                    This project showcases modern Python web development with a focus on performance, 
+                    beautiful design, and developer experience.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

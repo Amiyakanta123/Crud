@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Modern Python Web App{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="text-center mb-12">
+        <h1 class="text-5xl font-bold text-gray-900 mb-4">Welcome to PyWebApp</h1>
+        <p class="text-xl text-gray-600">A modern, high-performance web application built with Python & FastAPI</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-500 text-sm font-medium">Total Tasks</p>
+                    <p class="text-3xl font-bold text-gray-900 mt-2">{{ stats.total_tasks }}</p>
+                </div>
+                <div class="bg-blue-100 rounded-full p-3">
+                    <svg class="h-8 w-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-500 text-sm font-medium">Completed</p>
+                    <p class="text-3xl font-bold text-green-600 mt-2">{{ stats.completed_tasks }}</p>
+                </div>
+                <div class="bg-green-100 rounded-full p-3">
+                    <svg class="h-8 w-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-500 text-sm font-medium">Pending</p>
+                    <p class="text-3xl font-bold text-orange-600 mt-2">{{ stats.pending_tasks }}</p>
+                </div>
+                <div class="bg-orange-100 rounded-full p-3">
+                    <svg class="h-8 w-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-500 text-sm font-medium">Completion Rate</p>
+                    <p class="text-3xl font-bold text-purple-600 mt-2">{{ stats.completion_rate }}%</p>
+                </div>
+                <div class="bg-purple-100 rounded-full p-3">
+                    <svg class="h-8 w-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md p-8 mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Task Management</h2>
+        <div class="space-y-4">
+            {% for task in tasks %}
+            <div class="border border-gray-200 rounded-lg p-4 hover:border-purple-300 transition">
+                <div class="flex items-start justify-between">
+                    <div class="flex items-start space-x-3">
+                        {% if task.completed %}
+                        <div class="flex-shrink-0 mt-1">
+                            <svg class="h-6 w-6 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        {% else %}
+                        <div class="flex-shrink-0 mt-1">
+                            <svg class="h-6 w-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-2a6 6 0 100-12 6 6 0 000 12z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        {% endif %}
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 {% if task.completed %}line-through text-gray-500{% endif %}">
+                                {{ task.title }}
+                            </h3>
+                            <p class="text-gray-600 mt-1">{{ task.description }}</p>
+                        </div>
+                    </div>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium {% if task.completed %}bg-green-100 text-green-800{% else %}bg-orange-100 text-orange-800{% endif %}">
+                        {% if task.completed %}Completed{% else %}Pending{% endif %}
+                    </span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-md p-6 text-white card-hover">
+            <h3 class="text-xl font-bold mb-2">Fast Performance</h3>
+            <p class="text-blue-100">Built with FastAPI for lightning-fast response times and high throughput</p>
+        </div>
+        <div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg shadow-md p-6 text-white card-hover">
+            <h3 class="text-xl font-bold mb-2">Modern Design</h3>
+            <p class="text-purple-100">Beautiful, responsive UI with Tailwind CSS and smooth animations</p>
+        </div>
+        <div class="bg-gradient-to-br from-pink-500 to-pink-600 rounded-lg shadow-md p-6 text-white card-hover">
+            <h3 class="text-xl font-bold mb-2">RESTful API</h3>
+            <p class="text-pink-100">Complete API with automatic documentation and validation</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
